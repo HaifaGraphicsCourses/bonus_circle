@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<body>
+	<canvas id="myCanvas" width="300" height="300" style="border:1px solid #d3d3d3;">
+Your browser does not support the HTML canvas tag.</canvas>
+
+<p>x_c:</p>
+<input type="number" id="x_c" value=150>
+
+<p>y_c:</p>
+<input type="number" id="y_c" value=150>
+
+<p>r:</p>
+<input type="number" id="r" value=100>
+
+<p>color:</p>
+<input type="text" id="color" value="#FF0000">
+
+<button onclick="myFunction()">Try it</button>
+<script>
+var canvas = document.getElementById("myCanvas");
+var ctx = canvas.getContext("2d");
+
+function myFunction() {
+  var x_c = +document.getElementById("x_c").value;
+  var y_c = +document.getElementById("y_c").value;
+  var r = +document.getElementById("r").value;
+  var color =document.getElementById("color").value;
+  ctx.fillStyle = color;
+  ctx.clearRect(0, 0, 300, 300);
+  circle(x_c,y_c,r);
+}
+function circle(x_c,y_c,r) {
+	//let x_c=150,y_c=150,r=100;
+	//ctx.fillRect(x_c, y_c, 5, 5);
+  var x=0;
+  var y=r;
+  var d=3-2*r;
+ ctx.fillRect(x+x_c, y_c+y, 1, 1);
+console.log("Hello world!");
+console.log("x:"+x+"y:"+y);
+  while(y>=x){
+  	console.log("int the while: x:"+x+"y:"+y);
+  	x++;
+  	if(d<0){
+  		d=d+4*x+6;
+  	}
+  	else{
+  		y--;
+  		d=d+4*(x-y)+10;
+  	}
+  	ctx.fillRect(x_c+x,y_c-y, 1, 1);
+  	ctx.fillRect(x_c+x, y_c+y, 1, 1);
+  	ctx.fillRect(x_c-x, y_c-y, 1, 1);
+  	ctx.fillRect(x_c-x, y_c+y, 1, 1);
+
+  	ctx.fillRect(x_c+y, y_c-x, 1, 1);
+  	ctx.fillRect(x_c+y, y_c+x, 1, 1);
+  	ctx.fillRect(x_c-y, y_c-x, 1, 1);
+  	ctx.fillRect(x_c-y, y_c+x, 1, 1);
+  }
+
+
+}
+
+</script>
+
+</body>
+</html>
